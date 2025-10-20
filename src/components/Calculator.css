@@ -1,0 +1,60 @@
+/* === Calculator.css === */
+
+.container {
+    max-width: 320px;
+    margin: 40px auto;
+    background: #FDF6E6;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+.calculator {
+    max-width: 320px;
+    margin: 40px auto;
+    padding: 15px;
+    background: #B8F3D7;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .display {
+  
+    color: black;
+    font-weight: bold;
+    text-align: right;
+    font-size: 2rem;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+  }
+  
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  
+  .calc-btn {
+    background: #FDF6E6;
+    width: 60px;
+    height: 60px;
+    font-weight: bold;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .calc-btn:hover {
+    background: #d5d5d5;
+  }
+  
+  .calc-btn:active {
+    box-shadow: none;
+  }
+  
+  
