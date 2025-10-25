@@ -4,7 +4,9 @@ import Display from "./Display";
 import "./Calculator.css";
 
 
-export default function Calculator() {
+
+
+export default function Calculator({mode}) {
     const [expression, setExpression] = useState("");
     const [result, setResult] = useState("");
 
@@ -46,6 +48,38 @@ export default function Calculator() {
       setExpression(expression + value);
     };
 
+
+    const handleFahrenheitChange = (value)=>{
+      if (value === "C") {
+        setExpression("");
+        setResult("");
+        return;
+      }
+
+
+      if (value === "=") {
+        // اینجا تبدیل فارنهایت به سلسیوس انجام می‌دیم
+
+        try{
+          const fahrenheit = parseFloat(expression);
+          if (isNaN(fahrenheit)){
+            setResult('Erorr');
+            return;
+          }
+
+          const celsius = ((fahrenheit - 32) * 5 ) / 9;
+          setResult(celsius.toFixed(2));
+        }catch{
+          setResult("erorr");
+        }
+        return;
+      }
+    
+      // اضافه کردن عدد یا نقطه
+      setExpression(expression + value);
+
+    };
+
     const buttons = [
         "C","+/-","%","/",
         "7", "8", "9", "*",
@@ -56,12 +90,12 @@ export default function Calculator() {
 
     return (
         <div>
-            <Display value={result} expression={expression} />
+            <Display value={result} expression={expression} mode={mode} />   
             <div className="calculator">
           
                 <div  className="button-grid">
                     {buttons.map((b) => (
-                        <CalcButton key={b} label={b} onClick={handleClick} />
+                        <CalcButton key={b} label={b} onClick={mode === "calculator"? handleClick : handleFahrenheitChange } />
                     ))}
                 </div>
             </div>
